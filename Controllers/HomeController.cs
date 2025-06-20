@@ -28,4 +28,11 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    public IActionResult CheckIp()
+    {
+        var remoteIp = HttpContext.Connection.RemoteIpAddress?.ToString();
+
+        return Content($"Your IP: {remoteIp}");
+    }
 }
