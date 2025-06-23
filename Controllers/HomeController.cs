@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using IPChecker2.Models;
+using System.Net;
 
 namespace IPChecker2.Controllers;
 
@@ -31,7 +32,7 @@ public class HomeController : Controller
 
     public IActionResult CheckIp()
     {
-        var remoteIp = HttpContext.Connection.RemoteIpAddress.ToString();
+        var remoteIp = Dns.GetHostAddresses(Dns.GetHostName());
 
         return Content($"Your IP: {remoteIp}");
     }
