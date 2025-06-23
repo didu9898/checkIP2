@@ -32,23 +32,23 @@ public class HomeController : Controller
 
     public IActionResult CheckIp()
     {
-        return Content($"Your host: {Dns.GetHostName()}");
-        // var hostAddresses = Dns.GetHostAddresses(Dns.GetHostName());
-        // 
-        // string host = "";
-        // foreach (var ip in hostAddresses)
-        // {
-        //     try
-        //     {
-        //         var hostEntry = Dns.GetHostEntry(ip);
-        //         host = host + $"{ip} → {hostEntry.HostName}";
-        //     }
-        //     catch
-        //     {
-        //         host = host + $"{ip} → host name not found";
-        //     }
-        // }
-        // 
-        // return Content($"Your host: {host}");
+        // return Content($"Your host: {Dns.GetHostName()}");
+        var hostAddresses = Dns.GetHostAddresses(Dns.GetHostName());
+
+        string host = "";
+        foreach (var ip in hostAddresses)
+        {
+            try
+            {
+                var hostEntry = Dns.GetHostEntry(ip);
+                host = host + $"{ip} → {hostEntry.HostName}";
+            }
+            catch
+            {
+                host = host + $"{ip} → host name not found";
+            }
+        }
+
+        return Content($"Your host: {host}");
     }
 }
