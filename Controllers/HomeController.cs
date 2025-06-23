@@ -32,7 +32,7 @@ public class HomeController : Controller
 
     public IActionResult CheckIp()
     {
-        var remoteIp = Dns.GetHostAddresses(Dns.GetHostName());
+        string remoteIp = Dns.GetHostAddresses(Dns.GetHostName()).ToString();
 
         return Content($"Your IP: {remoteIp}");
     }
