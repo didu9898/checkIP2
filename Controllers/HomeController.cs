@@ -31,7 +31,7 @@ public class HomeController : Controller
 
     public IActionResult CheckIp()
     {
-        var remoteIp = HttpContext.Connection.RemoteIpAddress.ToString();
+        var remoteIp = HttpContext.Request.Headers["X-Forwarded-For"].ToString();
 
         return Content($"Your IP: {remoteIp}");
     }
