@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using IPChecker2.Models;
 using System.Net;
@@ -32,8 +32,23 @@ public class HomeController : Controller
 
     public IActionResult CheckIp()
     {
-        string remoteIp = Dns.GetHostAddresses(Dns.GetHostName()).ToString();
-
-        return Content($"Your IP: {remoteIp}");
+        return Content($"Your host: {Dns.GetHostName()}");
+        // var hostAddresses = Dns.GetHostAddresses(Dns.GetHostName());
+        // 
+        // string host = "";
+        // foreach (var ip in hostAddresses)
+        // {
+        //     try
+        //     {
+        //         var hostEntry = Dns.GetHostEntry(ip);
+        //         host = host + $"{ip} → {hostEntry.HostName}";
+        //     }
+        //     catch
+        //     {
+        //         host = host + $"{ip} → host name not found";
+        //     }
+        // }
+        // 
+        // return Content($"Your host: {host}");
     }
 }
