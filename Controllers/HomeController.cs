@@ -31,7 +31,7 @@ public class HomeController : Controller
 
     public IActionResult CheckIp()
     {
-        var remoteIp = HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
+        var remoteIp = HttpContext.Connection.RemoteIpAddress.ToString();
 
         return Content($"Your IP: {remoteIp}");
     }
